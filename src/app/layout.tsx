@@ -1,0 +1,32 @@
+import { Providers } from "@/components";
+import { dmSans, inter } from "@/constants";
+import { cn } from "@/lib";
+import "@/styles/globals.css";
+import { generateMetadata } from "@/utils";
+import { DM_Sans } from "next/font/google";
+
+const font = DM_Sans({ subsets: ["latin"] });
+
+export const metadata = generateMetadata();
+
+export default function RootLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
+    return (
+        <html lang="en">
+            <body
+                className={cn(
+                    "min-h-screen bg-background text-foreground !font-heading antialiased",
+                    inter.variable,
+                    dmSans.variable,
+                )}
+            >
+                <Providers>
+                    {children}
+                </Providers>
+            </body>
+        </html>
+    );
+};
