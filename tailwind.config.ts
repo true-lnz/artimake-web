@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -54,8 +54,8 @@ const config = {
         },
       },
       fontFamily: {
-        "heading": ["var(--font-dmsans)"],
-        "default": ["var(--font-inter)"],
+        heading: ["var(--font-dmsans)"],
+        default: ["var(--font-inter)"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -71,15 +71,15 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "loader": {
+        loader: {
           "0%": {
-            "transform": "rotate(0deg)",
+            transform: "rotate(0deg)",
           },
           "100%": {
-            "transform": "rotate(360deg)",
+            transform: "rotate(360deg)",
           },
         },
-        "pump": {
+        pump: {
           "0%, 100%": { transform: "scale(0.8)" },
           "50%": { transform: "scale(1)" },
         },
@@ -87,12 +87,12 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "loader": "spin 0.5s linear infinite",
-        "pump": "pump 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        loader: "spin 0.5s linear infinite",
+        pump: "pump 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('tailwind-scrollbar-hide')],
-} satisfies Config
+  plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar-hide")],
+} satisfies Config;
 
-export default config
+export default config;

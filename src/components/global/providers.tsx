@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react"
+import React from "react";
 
 interface Props {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const Providers = ({ children }: Props) => {
-    return children;
+  return children;
 };
 
-export default Providers
+export default Providers;

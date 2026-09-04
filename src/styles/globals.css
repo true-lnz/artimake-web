@@ -59,14 +59,14 @@
 }
 
 .jhfsd {
-  color: #34848C;
+  color: #34848c;
   color: rgb(6, 182, 212);
   color: rgb(139, 92, 246);
   color: rgb(239, 68, 68);
 }
 
 ::selection {
-  background: hsl(var(--primary)/0.1);
+  background: hsl(var(--primary) / 0.1);
   color: hsl(var(--foreground));
 }
 
@@ -75,7 +75,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--accent-foreground)/0.3);
+  background: hsl(var(--accent-foreground) / 0.3);
   border-radius: 9999px;
 }
 
@@ -98,9 +98,9 @@ image {
 
 .container {
   --uib-size: 45px;
-  --uib-color: #34848C;
+  --uib-color: #34848c;
   --uib-speed: 1.75s;
-  --uib-bg-opacity: .1;
+  --uib-bg-opacity: 0.1;
   height: 31.25px;
   width: 50px;
   transform-origin: center;
@@ -113,7 +113,8 @@ image {
   stroke-dashoffset: 0;
   stroke-linecap: round;
   stroke-linejoin: round;
-  animation: travel var(--uib-speed) ease-in-out infinite,
+  animation:
+    travel var(--uib-speed) ease-in-out infinite,
     fade var(--uib-speed) ease-out infinite;
   will-change: stroke-dasharray, stroke-dashoffset;
   transition: stroke 0.5s ease;

@@ -8,12 +8,4 @@ import Footer from "./navigation/footer";
 
 import Loader from "./loader";
 
-export {
-    Icons,
-    AnimationContainer,
-    MaxWidthWrapper,
-    Providers,
-    Navbar,
-    Footer,
-    Loader,
-};
+export { Icons, AnimationContainer, MaxWidthWrapper, Providers, Navbar, Footer, Loader };
