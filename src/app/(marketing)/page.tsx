@@ -16,6 +16,8 @@ import React from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Image from "next/image";
 import SupportBanner from "@/components/support/support-banner";
+import FaqSection, { faqStructuredData } from "@/components/faq/faq-section";
+import DownloadAppButton from "@/components/mobile-app/download-app-button";
 
 const HomePage = () => {
   const baseDelay = 0.2;
@@ -221,12 +223,29 @@ const HomePage = () => {
               Tried of feeling sick? Get started with Cura today and get the right medications for
               your symptoms
             </p>
-            <Link href="/dashboard" className={buttonVariants({ className: "mt-8" })}>
-              Renew your health
-              <ArrowRightIcon className="w-4 h-4 ml-1.5" />
-            </Link>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+              <Link href="/mobile-app" className={buttonVariants()}>
+                О приложении
+                <ArrowRightIcon className="ml-1.5 h-4 w-4" />
+              </Link>
+              <DownloadAppButton />
+            </div>
           </div>
         </div>
+      </MaxWidthWrapper>
+
+      <MaxWidthWrapper>
+        <FaqSection />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqStructuredData,
+            }),
+          }}
+        />
       </MaxWidthWrapper>
     </>
   );

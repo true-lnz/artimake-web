@@ -4,6 +4,7 @@ import { ArrowRightIcon } from "lucide-react";
 import Icons from "../global/icons";
 import MaxWidthWrapper from "../global/max-width-wrapper";
 import { buttonVariants } from "../ui/button";
+import DownloadAppButton from "../mobile-app/download-app-button";
 
 const Navbar = () => {
   return (
@@ -20,9 +21,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link href="/auth/signin" className={buttonVariants({ size: "sm", variant: "ghost" })}>
-              Скачать приложение
-            </Link>
+            <DownloadAppButton variant="ghost" size="sm" />
             <Link href="/auth/signup" className={buttonVariants({ size: "sm" })}>
               Купить в Ozon <ArrowRightIcon className="w-4 h-4 ml-1.5" />
             </Link>
