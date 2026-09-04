@@ -7,5 +7,15 @@ import Navbar from "./navigation/navbar";
 import Footer from "./navigation/footer";
 
 import Loader from "./loader";
+import SupportBanner from "./support/support-banner";
 
-export { Icons, AnimationContainer, MaxWidthWrapper, Providers, Navbar, Footer, Loader };
+export {
+  Icons,
+  AnimationContainer,
+  MaxWidthWrapper,
+  Providers,
+  Navbar,
+  Footer,
+  Loader,
+  SupportBanner,
+};

@@ -1,106 +1,65 @@
-import React from "react";
-import MaxWidthWrapper from "../global/max-width-wrapper";
-import AnimationContainer from "../global/animation-container";
-import Icons from "../global/icons";
+import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import CompanyInfo from "../company/company-info";
 import { FeedbackDialog } from "../feedback/feedback-dialog";
+import AnimationContainer from "../global/animation-container";
+import MaxWidthWrapper from "../global/max-width-wrapper";
 
-const Footer = () => {
-  return (
-    <footer className="w-full relative bottom-0 border-t border-border pt-20 pb-8">
-      <MaxWidthWrapper>
-        <AnimationContainer>
-          <div className="flex flex-col md:flex-row items-start justify-between w-full">
-            <div className="flex flex-col items-start justify-between w-full max-w-md mr-auto">
-              <div className="flex items-center gap-2 mb-6 md:mb-0">
-                <Icons.logo className="w-8 h-8" />
-              </div>
-              <div className="flex flex-col items-start mt-5">
-                <h2 className="text-lg font-semibold font-heading mb-2">Join our newsletter</h2>
-                <p className="text-muted-foreground text-sm mb-4 text-center md:text-left">
-                  Sign up to our newsletter to get the latest news and updates.
-                </p>
-                <form className="flex">
-                  <Input
-                    required
-                    type="email"
-                    placeholder="Enter your email"
-                    className="rounded-l-lg rounded-r-none border focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 h-9"
+const navigationLinks = [
+  { label: "Наверх", href: "/#top" },
+  { label: "Как работает", href: "/#how-it-works" },
+  { label: "Возможности", href: "/#features" },
+  { label: "Где купить", href: "/#where-to-buy" },
+  { label: "О приложении", href: "/mobile-app" },
+  { label: "Контакты", href: "/contacts" },
+];
+
+const Footer = () => (
+  <footer className="relative bottom-0 w-full border-t border-border pb-8 pt-20">
+    <MaxWidthWrapper>
+      <AnimationContainer>
+        <div className="flex w-full flex-col items-start justify-between gap-10 md:flex-row">
+          <CompanyInfo />
+          <div className="grid w-full gap-8 sm:grid-cols-2 md:max-w-md">
+            <nav aria-label="Навигация">
+              <h3 className="mb-3 font-semibold">Навигация</h3>
+              <ul className="flex flex-col gap-2 text-sm text-muted-foreground">
+                {navigationLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="hover:text-foreground">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div>
+              <h3 className="mb-3 font-semibold">Скачать приложение</h3>
+              <div className="flex flex-col items-start gap-2">
+                <Link href="/mobile-app" aria-label="Открыть страницу приложения">
+                  <Image src="/icons/app-store-badge.svg" alt="App Store" width={135} height={40} />
+                </Link>
+                <Link href="/mobile-app" aria-label="Открыть страницу приложения">
+                  <Image
+                    src="/icons/google-play-badge.svg"
+                    alt="Google Play"
+                    width={135}
+                    height={40}
                   />
-                  <Button
-                    type="submit"
-                    className="rounded-r-lg rounded-l-none hover:shadow-none hover:translate-y-0"
-                  >
-                    Get notified
-                  </Button>
-                </form>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 md:text-left mt-8 gap-20">
-              <div>
-                <h3 className="font-semibold mb-2">Company</h3>
-                <ul className="text-muted-foreground text-sm space-y-2">
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      Services
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      Careers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      Results
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Legal</h3>
-                <ul className="text-muted-foreground text-sm space-y-2">
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      Help
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      Privacy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="hover:text-foreground">
-                      Terms
-                    </Link>
-                  </li>
-                </ul>
+                </Link>
               </div>
             </div>
           </div>
-          <div className="border-t border-neutral-200 mt-10 pt-6 flex items-center justify-between w-full">
-            <p className="text-start text-muted-foreground text-sm">
-              All rights reserved @{new Date().getFullYear()} Cura
-            </p>
-            <FeedbackDialog />
-          </div>
-        </AnimationContainer>
-      </MaxWidthWrapper>
-    </footer>
-  );
-};
+        </div>
+        <div className="mt-10 flex w-full items-center justify-between border-t border-neutral-200 pt-6">
+          <p className="text-start text-sm text-muted-foreground">
+            © ООО «Артимэйк», {new Date().getFullYear()}
+          </p>
+          <FeedbackDialog />
+        </div>
+      </AnimationContainer>
+    </MaxWidthWrapper>
+  </footer>
+);
 
 export default Footer;

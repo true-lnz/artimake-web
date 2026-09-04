@@ -15,14 +15,16 @@ import Link from "next/link";
 import React from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Image from "next/image";
-import ScrollProgress from "@/components/global/scroll-progress";
+import SupportBanner from "@/components/support/support-banner";
 
 const HomePage = () => {
   const baseDelay = 0.2;
 
   return (
     <>
-      <ScrollProgress />
+      <MaxWidthWrapper className="pt-6">
+        <SupportBanner compact />
+      </MaxWidthWrapper>
       {/* hero */}
       <MaxWidthWrapper className="flex flex-col items-center w-full relative">
         <div className="flex flex-col items-center justify-center w-full py-20 text-center">
@@ -69,8 +71,20 @@ const HomePage = () => {
         </div>
       </MaxWidthWrapper>
 
+      <MaxWidthWrapper className="py-8">
+        <section
+          id="how-it-works"
+          className="rounded-xl border border-border bg-background/70 px-6 py-8 text-center shadow-sm sm:px-10"
+        >
+          <h2 className="text-2xl font-semibold tracking-tight">Как работает</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+            Раздел с подробным описанием работы умного кресла и приложения готовится.
+          </p>
+        </section>
+      </MaxWidthWrapper>
+
       {/* features */}
-      <MaxWidthWrapper className="py-10">
+      <MaxWidthWrapper id="features" className="py-10">
         <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
           <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground mt-6">
             Features that will <span className="text-gradient">amaze</span> you
@@ -91,82 +105,98 @@ const HomePage = () => {
         </div>
       </MaxWidthWrapper>
 
-      {/* pricing */}
-      <MaxWidthWrapper className="py-10">
-        <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground mt-6">
-            Choose a <span className="text-gradient">plan</span> that works for you
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-lg">
-            Get started with our free plan or upgrade to a premium plan for additional features
+      <MaxWidthWrapper className="py-8">
+        <section
+          id="where-to-buy"
+          className="rounded-xl border border-border bg-background/70 px-6 py-8 text-center shadow-sm sm:px-10"
+        >
+          <h2 className="text-2xl font-semibold tracking-tight">Где купить</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+            Раздел с информацией о точках продаж и доступных способах заказа готовится.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 py-8 gap-6 max-w-3xl px-0 lg:px-8 mx-auto w-full">
-          {PLANS.map((plan, index) => (
-            <AnimationContainer
-              key={plan.name}
-              delay={baseDelay + index / 5}
-              className="flex flex-col w-full h-full"
-            >
-              <Card
-                className={cn(
-                  "w-full h-full flex flex-col rounded-xl border-2 shadow-none",
-                  plan.name === "Pro" ? "border-primary" : "border-border",
-                )}
-              >
-                <CardHeader>
-                  <CardTitle className="font-heading">{plan.name}</CardTitle>
-                  <CardDescription>{plan.info}</CardDescription>
-                  <h5 className="text-3xl md:text-4xl font-semibold font-heading pt-2">
-                    ${plan.price}
-                    <span className="text-sm text-muted-foreground font-normal">
-                      {plan.name === "Pro" ? "(one time)" : ""}
-                    </span>
-                  </h5>
-                </CardHeader>
-                <CardContent className="w-full">
-                  <ul className="flex flex-col items-start gap-4">
-                    {plan.features.map((feature, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <CheckIcon
-                          className={cn(
-                            "w-5 h-5",
-                            plan.name === "Pro" ? "text-primary" : "text-foreground",
-                          )}
-                        />
-                        <TooltipProvider>
-                          <Tooltip delayDuration={0}>
-                            <TooltipTrigger asChild>
-                              <p
-                                className={cn(
-                                  "text-sm text-muted-foreground",
-                                  feature.tooltip &&
-                                    "border-b border-dotted border-border cursor-pointer",
-                                )}
-                              >
-                                {feature.text}
-                              </p>
-                            </TooltipTrigger>
-                            {feature.tooltip && <TooltipContent>{feature.tooltip}</TooltipContent>}
-                          </Tooltip>
-                        </TooltipProvider>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter className="mt-auto w-full">
-                  <Button asChild variant={plan.name === "Pro" ? "default" : "secondary"}>
-                    <Link href={plan.btn.href} className="flex items-center w-full group">
-                      {plan.btn.text}
-                      <ArrowRightIcon className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-all" />
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </AnimationContainer>
-          ))}
-        </div>
+        </section>
       </MaxWidthWrapper>
+
+      {/* pricing */}
+      <div className="hidden">
+        <MaxWidthWrapper className="py-10">
+          <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
+            <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground mt-6">
+              Choose a <span className="text-gradient">plan</span> that works for you
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-lg">
+              Get started with our free plan or upgrade to a premium plan for additional features
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 py-8 gap-6 max-w-3xl px-0 lg:px-8 mx-auto w-full">
+            {PLANS.map((plan, index) => (
+              <AnimationContainer
+                key={plan.name}
+                delay={baseDelay + index / 5}
+                className="flex flex-col w-full h-full"
+              >
+                <Card
+                  className={cn(
+                    "w-full h-full flex flex-col rounded-xl border-2 shadow-none",
+                    plan.name === "Pro" ? "border-primary" : "border-border",
+                  )}
+                >
+                  <CardHeader>
+                    <CardTitle className="font-heading">{plan.name}</CardTitle>
+                    <CardDescription>{plan.info}</CardDescription>
+                    <h5 className="text-3xl md:text-4xl font-semibold font-heading pt-2">
+                      ${plan.price}
+                      <span className="text-sm text-muted-foreground font-normal">
+                        {plan.name === "Pro" ? "(one time)" : ""}
+                      </span>
+                    </h5>
+                  </CardHeader>
+                  <CardContent className="w-full">
+                    <ul className="flex flex-col items-start gap-4">
+                      {plan.features.map((feature, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <CheckIcon
+                            className={cn(
+                              "w-5 h-5",
+                              plan.name === "Pro" ? "text-primary" : "text-foreground",
+                            )}
+                          />
+                          <TooltipProvider>
+                            <Tooltip delayDuration={0}>
+                              <TooltipTrigger asChild>
+                                <p
+                                  className={cn(
+                                    "text-sm text-muted-foreground",
+                                    feature.tooltip &&
+                                      "border-b border-dotted border-border cursor-pointer",
+                                  )}
+                                >
+                                  {feature.text}
+                                </p>
+                              </TooltipTrigger>
+                              {feature.tooltip && (
+                                <TooltipContent>{feature.tooltip}</TooltipContent>
+                              )}
+                            </Tooltip>
+                          </TooltipProvider>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                  <CardFooter className="mt-auto w-full">
+                    <Button asChild variant={plan.name === "Pro" ? "default" : "secondary"}>
+                      <Link href={plan.btn.href} className="flex items-center w-full group">
+                        {plan.btn.text}
+                        <ArrowRightIcon className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-all" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </AnimationContainer>
+            ))}
+          </div>
+        </MaxWidthWrapper>
+      </div>
 
       {/* cta */}
       <MaxWidthWrapper className="py-20">
@@ -179,6 +209,7 @@ const HomePage = () => {
               height={1200}
               quality={100}
               priority
+              unoptimized
               className="mx-auto lg:mr-auto h-[420px] max-w-full sm:max-w-sm"
             />
           </div>
