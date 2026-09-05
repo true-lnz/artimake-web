@@ -1,6 +1,8 @@
 ﻿import { AnimationContainer, Icons, MaxWidthWrapper } from "@/components";
+import FaqSection, { faqStructuredData } from "@/components/faq/faq-section";
+import AppCta from "@/components/mobile-app/app-cta";
+import SupportBanner from "@/components/support/support-banner";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { FEATURES, PLANS } from "@/constants";
 import {
   Card,
   CardContent,
@@ -9,18 +11,79 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib";
-import { ArrowRightIcon, CheckIcon } from "lucide-react";
-import Link from "next/link";
-import React from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { FEATURES, PLANS } from "@/constants";
+import { cn } from "@/lib";
+import { ArrowRightIcon, BluetoothIcon, CheckIcon } from "lucide-react";
 import Image from "next/image";
-import SupportBanner from "@/components/support/support-banner";
-import FaqSection, { faqStructuredData } from "@/components/faq/faq-section";
-import DownloadAppButton from "@/components/mobile-app/download-app-button";
+import Link from "next/link";
 
 const HomePage = () => {
   const baseDelay = 0.2;
+
+  const howItWorksCards = [
+    {
+      title: "Подключите кресло к телефону",
+      description:
+        "Найдите совместимое кресло поблизости, подключите его по Bluetooth и быстро завершите первичную настройку.",
+      className: "bg-muted text-[#262932]",
+      visual: (
+        <div className="relative mt-8 flex h-48 w-full items-center justify-center overflow-hidden rounded-[28px] bg-[#262932]">
+          <div className="absolute h-36 w-36 rounded-full border border-[#34848C]/35" />
+          <div className="absolute h-24 w-24 rounded-full border border-[#34848C]/40" />
+          <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[#34848C] shadow-lg">
+            <BluetoothIcon className="h-8 w-8" />
+          </div>
+          <div className="absolute bottom-5 left-6 h-2 w-2 rounded-full bg-white/80" />
+          <div className="absolute right-10 top-7 h-3 w-3 rounded-full bg-white/70" />
+        </div>
+      ),
+    },
+    {
+      title: "Настройте комфортную посадку",
+      description:
+        "Пройдите калибровку, чтобы кресло запомнило удобное исходное положение и точнее замечало отклонения.",
+      className: "bg-muted text-[#262932]",
+      visual: (
+        <div className="relative mt-8 flex h-48 w-full items-center justify-center overflow-hidden rounded-[28px] bg-[#262932]">
+          <div className="w-44 rounded-2xl bg-white/90 p-4 shadow-lg">
+            <div className="flex items-center justify-between text-xs font-semibold text-[#30231D]">
+              <span>Калибровка</span>
+              <span className="text-[#34848C]">Готово</span>
+            </div>
+            <div className="mt-5 h-2 rounded-full bg-[#E7D8D0]">
+              <div className="h-2 w-4/5 rounded-full bg-[#34848C]" />
+            </div>
+            <div className="mt-3 flex justify-between text-[10px] text-[#7C6A60]">
+              <span>Нейтральная поза</span>
+              <span>80%</span>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Получайте обратную связь вовремя",
+      description:
+        "Отслеживайте посадку в реальном времени, получайте сигналы при отклонении и напоминания о перерывах.",
+      className: "bg-muted text-[#262932]",
+      visual: (
+        <div className="relative mt-8 flex h-48 w-full items-center justify-center overflow-hidden rounded-[28px] bg-[#262932]">
+          <div className="absolute right-6 top-6 flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[10px] font-semibold text-[#1F263B] shadow-lg">
+            <span className="h-2 w-2 rounded-full bg-[#34848C]" />
+            Пора сделать паузу
+          </div>
+          <Image
+            src="/images/dashboard.png"
+            alt="Статистика посадки Artimake"
+            width={520}
+            height={290}
+            className="absolute bottom-[-58px] w-[235px] rounded-xl shadow-xl"
+          />
+        </div>
+      ),
+    },
+  ];
 
   return (
     <>
@@ -34,7 +97,7 @@ const HomePage = () => {
             <div className="w-52 h-52 rounded-full bg-orange-500 blur-[10rem] opacity-70 -z-10"></div>
             <div className="hidden lg:w-52 h-52 rounded-full bg-amber-500 blur-[10rem] opacity-70 -z-10"></div>
           </div>
-          <h1 className="text-foreground py-6 text-4xl sm:text-6xl md:text-7xl font-semibold md:font-bold !leading-snug tracking-normal text-balance w-full">
+          <h1 className="text-[#262932] py-6 text-4xl sm:text-6xl md:text-7xl font-semibold md:font-bold !leading-snug tracking-wide text-balance w-full">
             Your personal <br />{" "}
             <span className="bg-gradient-to-r from-primary to-amber-500 text-transparent bg-clip-text">
               health
@@ -74,21 +137,51 @@ const HomePage = () => {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper className="py-8">
-        <section
-          id="how-it-works"
-          className="rounded-xl border border-border bg-background/70 px-6 py-8 text-center shadow-sm sm:px-10"
-        >
-          <h2 className="text-2xl font-semibold tracking-tight">Как работает</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
-            Раздел с подробным описанием работы умного кресла и приложения готовится.
-          </p>
+        <section id="how-it-works" className="overflow-hidden py-10">
+          <div className="mx-auto flex w-full max-w-md flex-col justify-center py-8 text-start md:text-center">
+            <h2 className="mt-6 text-3xl font-semibold font-heading text-[#262932] tracking-wide md:text-4xl">
+              Как это <span className="text-gradient">работает</span>
+            </h2>
+            <p className="mt-4 max-w-lg text-muted-foreground">
+              Подключите кресло, настройте комфортную посадку и получайте своевременную обратную
+              связь
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 py-8 lg:grid-cols-3">
+            {howItWorksCards.map(({ title, description, className, visual }, index) => (
+              <AnimationContainer key={title} delay={baseDelay + 0.2 + index * 0.15}>
+                <Link
+                  href="/mobile-app"
+                  className={`group flex min-h-[430px] cursor-pointer flex-col justify-between overflow-hidden rounded-[24px] p-5 transition-transform duration-300 hover:-translate-y-2 md:p-6 ${className}`}
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="max-w-[15ch] text-left text-xl font-semibold leading-tight tracking-wide">
+                        {title}
+                      </h3>
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/75 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <span className="block group-hover:animate-arrow-enter-250">
+                          <ArrowRightIcon className="arrow-secondary h-5 w-5 -rotate-45" />
+                        </span>
+                      </span>
+                    </div>
+                    <p className="mt-4 max-w-sm text-left text-sm leading-6 text-muted-foreground">
+                      {description}
+                    </p>
+                  </div>
+                  {visual}
+                </Link>
+              </AnimationContainer>
+            ))}
+          </div>
         </section>
       </MaxWidthWrapper>
 
       {/* features */}
       <MaxWidthWrapper id="features" className="py-10">
         <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
-          <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground mt-6">
+          <h2 className="text-3xl md:text-4xl font-semibold font-heading text-[#262932] mt-6 tracking-wide">
             Features that will <span className="text-gradient">amaze</span> you
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg">
@@ -112,7 +205,7 @@ const HomePage = () => {
           id="where-to-buy"
           className="rounded-xl border border-border bg-background/70 px-6 py-8 text-center shadow-sm sm:px-10"
         >
-          <h2 className="text-2xl font-semibold tracking-tight">Где купить</h2>
+          <h2 className="text-2xl font-semibold tracking-wide text-[#262932]">Где купить</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
             Раздел с информацией о точках продаж и доступных способах заказа готовится.
           </p>
@@ -123,7 +216,7 @@ const HomePage = () => {
       <div className="hidden">
         <MaxWidthWrapper className="py-10">
           <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
-            <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground mt-6">
+            <h2 className="text-3xl md:text-4xl font-semibold font-heading text-[#262932] mt-6 tracking-wide">
               Choose a <span className="text-gradient">plan</span> that works for you
             </h2>
             <p className="mt-4 text-muted-foreground max-w-lg">
@@ -201,38 +294,11 @@ const HomePage = () => {
       </div>
 
       {/* cta */}
-      <MaxWidthWrapper className="py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 max-w-full mx-auto w-full py-8 text-start gap-8">
-          <div className="flex w-full relative">
-            <Image
-              src="/images/mockup-phone.svg"
-              alt="mockup"
-              width={1000}
-              height={1200}
-              quality={100}
-              priority
-              unoptimized
-              className="mx-auto lg:mr-auto h-[420px] max-w-full sm:max-w-sm"
-            />
-          </div>
-          <div className="flex flex-col items-center justify-center text-center md:items-start md:text-start w-full">
-            <h2 className="text-3xl md:text-4xl font-semibold font-heading text-foreground">
-              Start your journey to better health
-            </h2>
-            <p className="text-muted-foreground max-w-lg mt-4">
-              Tried of feeling sick? Get started with Cura today and get the right medications for
-              your symptoms
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
-              <Link href="/mobile-app" className={buttonVariants()}>
-                О приложении
-                <ArrowRightIcon className="ml-1.5 h-4 w-4" />
-              </Link>
-              <DownloadAppButton />
-            </div>
-          </div>
-        </div>
-      </MaxWidthWrapper>
+      <div className="w-full overflow-hidden py-20">
+        <MaxWidthWrapper className="py-0">
+          <AppCta />
+        </MaxWidthWrapper>
+      </div>
 
       <MaxWidthWrapper>
         <FaqSection />

@@ -83,12 +83,17 @@ const config = {
           "0%, 100%": { transform: "scale(0.8)" },
           "50%": { transform: "scale(1)" },
         },
+        "arrow-enter-250": {
+          from: { opacity: "0", transform: "translate(-16px, 16px)" },
+          to: { opacity: "1", transform: "translate(0, 0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         loader: "spin 0.5s linear infinite",
         pump: "pump 1s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "arrow-enter-250": "arrow-enter-250 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards",
       },
     },
   },

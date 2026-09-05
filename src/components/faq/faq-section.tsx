@@ -49,7 +49,10 @@ export default function FaqSection() {
     <section id="faq" aria-labelledby="faq-title" className="py-10">
       <div className="mx-auto max-w-3xl">
         <div className="mb-6 text-center">
-          <h2 id="faq-title" className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2
+            id="faq-title"
+            className="text-3xl font-semibold tracking-wide text-[#262932] sm:text-4xl"
+          >
             Частые вопросы
           </h2>
           <p className="mt-3 text-muted-foreground">
