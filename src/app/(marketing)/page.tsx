@@ -23,9 +23,9 @@ const HomePage = () => {
 
   const howItWorksCards = [
     {
-      title: "Подключите кресло к телефону",
+      title: "Подключите кресло к телефону",
       description:
-        "Найдите совместимое кресло поблизости, подключите его по Bluetooth и быстро завершите первичную настройку.",
+        "Найдите совместимое кресло поблизости, подключите его по Bluetooth и быстро завершите первичную настройку.",
       className: "bg-muted text-[#262932]",
       visual: (
         <div className="relative mt-8 flex h-48 w-full items-center justify-center overflow-hidden rounded-[28px] bg-[#262932]">
@@ -98,23 +98,24 @@ const HomePage = () => {
             <div className="hidden lg:w-52 h-52 rounded-full bg-amber-500 blur-[10rem] opacity-70 -z-10"></div>
           </div>
           <h1 className="text-[#262932] py-6 text-4xl sm:text-6xl md:text-7xl font-semibold md:font-bold !leading-snug tracking-wide text-balance w-full">
-            Your personal <br />{" "}
+            Умное кресло <br />{" "}
             <span className="bg-gradient-to-r from-primary to-amber-500 text-transparent bg-clip-text">
-              health
+              Артимэйк
             </span>{" "}
-            assistant
           </h1>
           <p className="text-muted-foreground text-base md:text-lg max-w-xl py-2">
-            Instantly get the right medications for your symptoms with AI-powered recommendations
+            Мониторинг осанки, полезные напоминания
+            <br></br>и статистика сидения — в единой системе без лишних устройств
           </p>
           <div className="flex flex-row md:flex-row items-center justify-center gap-4 mt-8 w-full">
             <Link href="/dashboard" className={buttonVariants()}>
-              Start for free
+              Купить в Ozon
               <ArrowRightIcon className="w-4 h-4 ml-1.5" />
             </Link>
             <Link href="#" className={buttonVariants({ variant: "black" })}>
+              <Icons.apple className="w-4 h-4 mb-1" />
               <Icons.store className="w-4 h-4 mr-1.5" />
-              Get the app
+              Скачать приложение
             </Link>
           </div>
         </div>
@@ -180,22 +181,27 @@ const HomePage = () => {
 
       {/* features */}
       <MaxWidthWrapper id="features" className="py-10">
-        <div className="flex flex-col text-start md:text-center justify-center w-full py-8 max-w-md mx-auto">
+        <AnimationContainer className="mx-auto flex max-w-md flex-col justify-center py-8 text-start md:text-center">
           <h2 className="text-3xl md:text-4xl font-semibold font-heading text-[#262932] mt-6 tracking-wide">
-            Features that will <span className="text-gradient">amaze</span> you
+            Возможности умного кресла <span className="text-gradient">Артимэйк</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg">
-            Cura is packed with features that will help you get the right medications for your
-            symptoms
+            Настройте кресло под себя и получайте понятную поддержку во время длительной работы
           </p>
-        </div>
+        </AnimationContainer>
         <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-8 md:gap-x-8 w-full">
-          {FEATURES.map((feature) => (
-            <div key={feature.title} className="flex flex-col items-start">
-              <feature.icon className="w-8 h-8 text-primary" />
-              <h3 className="text-lg font-medium font-heading mt-4">{feature.title}</h3>
-              <p className="text-muted-foreground mt-1 text-sm md:text-base">{feature.info}</p>
-            </div>
+          {FEATURES.map((feature, index) => (
+            <AnimationContainer
+              key={feature.title}
+              delay={0.15 + index * 0.08}
+              className="group"
+            >
+              <div className="flex flex-col items-start">
+                <feature.icon className="h-8 w-8 text-primary transition-transform duration-300 ease-out group-hover:-translate-y-1" />
+                <h3 className="mt-4 text-lg font-medium font-heading">{feature.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground md:text-base">{feature.info}</p>
+              </div>
+            </AnimationContainer>
           ))}
         </div>
       </MaxWidthWrapper>

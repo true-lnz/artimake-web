@@ -1,11 +1,11 @@
 import {
-  HeartHandshakeIcon,
-  HeartPulseIcon,
+  ActivityIcon,
+  BellRingIcon,
+  BluetoothIcon,
+  CircleGaugeIcon,
   LucideIcon,
-  PillIcon,
-  StethoscopeIcon,
-  UserIcon,
-  WandSparklesIcon,
+  PauseCircleIcon,
+  ScanLineIcon,
 } from "lucide-react";
 
 type Feature = {
@@ -16,33 +16,33 @@ type Feature = {
 
 export const FEATURES: Feature[] = [
   {
-    icon: UserIcon,
-    title: "Personalized Profiles",
-    info: "Create and manage your personal health profile with ease.",
+    icon: ScanLineIcon,
+    title: "Мониторинг в реальном времени",
+    info: "Датчики непрерывно отслеживают положение тела и замечают отклонения во время сидения.",
   },
   {
-    icon: StethoscopeIcon,
-    title: "Symptom Tracking",
-    info: "Easily track and log your symptoms for accurate analysis.",
+    icon: BellRingIcon,
+    title: "Обратная связь по посадке",
+    info: "Понятные подсказки помогают вовремя обратить внимание на положение спины и скорректировать его.",
   },
   {
-    icon: PillIcon,
-    title: "Medication Management",
-    info: "Keep track of your prescriptions and receive timely reminders.",
+    icon: PauseCircleIcon,
+    title: "Напоминания о перерывах",
+    info: "Не забывайте делать паузы и поддерживать комфортный рабочий ритм.",
   },
   {
-    icon: HeartPulseIcon,
-    title: "Health Analytics",
-    info: "Get detailed insights into your health trends over time.",
+    icon: ActivityIcon,
+    title: "Данные рабочих сессий",
+    info: "Смотрите, как менялась посадка в течение дня, и отслеживайте свои рабочие привычки.",
   },
   {
-    icon: WandSparklesIcon,
-    title: "AI Recommendations",
-    info: "Receive personalized recommendations for your health concerns.",
+    icon: CircleGaugeIcon,
+    title: "Персональная настройка",
+    info: "Откалибруйте комфортное положение, настройте чувствительность уведомлений, вибрацию и напоминания о перерывах.",
   },
   {
-    icon: HeartHandshakeIcon,
-    title: "Wellness Tips",
-    info: "Receive expert tips and advice to maintain your health.",
+    icon: BluetoothIcon,
+    title: "Без лишних устройств",
+    info: "Беспроводное подключение к приложению без браслетов и дополнительных датчиков.",
   },
 ];
