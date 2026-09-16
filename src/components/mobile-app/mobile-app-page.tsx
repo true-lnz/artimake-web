@@ -1,16 +1,28 @@
-import styles from "./mobile-app-page.module.css";
 import Image from "next/image";
+import Icons from "../global/icons";
+import styles from "./mobile-app-page.module.css";
+import Link from "next/link";
 
 const features = [
-  ["Save the moment", "Post your very first breath, the present, and then beyond"],
   [
-    "See what’s left",
-    "Your crisis view leaves you reeling with the reality that life is not forever",
+    "Всё важное — перед глазами",
+    "Приложение показывает, что кресло видит прямо сейчас: текущую посадку, отклонения и состояние подключения",
   ],
-  ["Know yourself", "Understand your life, the passing of time, and your origin story"],
-  ["Slow time down", "You’ve lived a lot and have so much more to live"],
+  [
+    "Подсказки, а не поток уведомлений",
+    "Настройте чувствительность напоминаний под себя и получайте обратную связь в подходящий момент",
+  ],
+  [
+    "Понятная статистика",
+    "История рабочей сессии помогает заметить, как вы сидите в течение дня, а не только в отдельный момент",
+  ],
+  [
+    "Ваши данные остаются вашими",
+    "Приложение работает без аккаунта, а данные о посадке и настройки хранятся локально на телефоне",
+  ],
 ] as const;
 
+const ruStoreUrl = "https://www.rustore.ru/catalog/app/com.advancedsolutionsdevelopers.smartchair";
 const appStoreUrl = "https://apps.apple.com/us/app/cronicle/id6751658893";
 
 export default function MobileAppPage() {
@@ -18,10 +30,10 @@ export default function MobileAppPage() {
     <div className={styles.page}>
       <a
         className={styles.qrDock}
-        href={appStoreUrl}
+        href={ruStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Scan or tap to download Cronicle on the App Store"
+        aria-label="Сканируйте QR-код или нажмите, чтобы скачать приложение в RuStore"
       >
         <Image
           className={styles.qr}
@@ -32,32 +44,38 @@ export default function MobileAppPage() {
           aria-hidden="true"
         />
         <span className={styles.qrCaption}>
-          <span className={styles.underlined}>App Store</span> ↗
+          <span className={styles.underlined}>RuStore</span> ↗
         </span>
       </a>
 
-      <Image
-        className={styles.wordmark}
-        src="/icons/headerlogo.svg"
-        alt="Cronicle"
-        width={140}
-        height={22}
-        priority
-      />
-      <h1 className={styles.hero}>One day you’ll be glad you kept this.</h1>
-      <p className={styles.subhero}>Your private existential life calendar.</p>
-      <AppStoreLink className={styles.topStore} />
+      <Link href="/" aria-label="Перейти на главную страницу Артимэйк">
+        <Image
+          className={styles.wordmark}
+          src="/icons/headerlogo.svg"
+          alt="Артимэйк"
+          width={160}
+          height={25}
+          priority
+        />
+      </Link>
+      <h1 className={styles.hero}>Кресло даёт обратную связь. Приложение помогает её понять.</h1>
+      <p className={styles.subhero}>
+        Познакомьтесь с приложением Artimake — понятная обратная связь о посадке, персональные
+        <br></br>
+        напоминания и статистика рабочего дня прямо в вашем смартфоне.
+      </p>
+      <StoreLinks className={styles.topStore} />
 
       <div className={styles.phone}>
         <div className={styles.phoneScreen}>
           <video
-            src="/images/videojuly.mp4"
+            src="/videos/demo.webm"
             autoPlay
             loop
             muted
             playsInline
             preload="auto"
-            aria-label="Cronicle app"
+            aria-label="Демонстрация приложения Артимэйк"
           />
         </div>
         <Image
@@ -71,8 +89,9 @@ export default function MobileAppPage() {
       </div>
 
       <p className={styles.mission}>
-        Founded with the belief that reconnecting you to what matters in the noise of today is a
-        mission worth embarking on.
+        Кресло отслеживает положение тела с помощью встроенных датчиков, а приложение помогает
+        разобраться в этих данных. Здесь можно увидеть, как проходит рабочая сессия, получить
+        напоминание об отклонении от настроенной посадки или вовремя сделать перерыв.
       </p>
 
       <section className={styles.featureBand}>
@@ -94,19 +113,13 @@ export default function MobileAppPage() {
         </div>
       </section>
 
-      <h2 className={styles.cta}>Reconnect to what matters</h2>
-      <AppStoreLink />
-      <nav className={styles.footerLinks} aria-label="Social links">
-        <a href="https://www.youtube.com/@getcronicleme" target="_blank" rel="noopener noreferrer">
-          YouTube
-        </a>
-        <a href="https://www.tiktok.com/@trycronicle" target="_blank" rel="noopener noreferrer">
-          TikTok
-        </a>
-        <a href="https://www.instagram.com/cronicle.me/" target="_blank" rel="noopener noreferrer">
-          Instagram
-        </a>
-        <a href="mailto:hello@cronicle.me">Email</a>
+      <h2 className={styles.cta}>Приложение «Артимэйк» — для Android и iPhone</h2>
+      <StoreLinks />
+      <nav className={styles.footerLinks} aria-label="Навигация">
+        <a href="/#top">На главную</a>
+        <a href="/#features">Возможности</a>
+        <a href="/#where-to-buy">Где купить</a>
+        <a href="/contacts">Контакты</a>
       </nav>
       <div className={styles.bottomMark} aria-hidden="true">
         <Image src="/images/footer.svg" alt="" width={1440} height={307} />
@@ -117,15 +130,17 @@ export default function MobileAppPage() {
   );
 }
 
-function AppStoreLink({ className = "" }: { className?: string }) {
+function StoreLinks({ className = "" }: { className?: string }) {
   return (
-    <a
-      className={`${styles.appStore} ${className}`}
-      href={appStoreUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Get it on the App Store
-    </a>
+    <div className={`${styles.storeLinks} ${className}`}>
+      <a className={styles.appStore} href={ruStoreUrl} target="_blank" rel="noopener noreferrer">
+        <Icons.rustore aria-hidden="true" />
+        Скачать в RuStore
+      </a>
+      <a className={styles.appStore} href={appStoreUrl} target="_blank" rel="noopener noreferrer">
+        <Icons.apple aria-hidden="true" />
+        Скачать в App Store
+      </a>
+    </div>
   );
 }

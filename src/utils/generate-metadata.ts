@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const generateMetadata = ({
-  title = `${process.env.NEXT_PUBLIC_APP_NAME} - Your Personal Health Assistant`,
-  description = `${process.env.NEXT_PUBLIC_APP_NAME} is a comprehensive virtual health coach platform that leverages AI to provide personalized health and wellness recommendations.`,
+  title = "Артимэйк — умное кресло для здоровой осанки",
+  description = "Умное кресло Артимэйк помогает контролировать осанку, получать полезные напоминания и анализировать статистику сидения.",
   image = "/images/thumbnail.png",
   icons = [
     {

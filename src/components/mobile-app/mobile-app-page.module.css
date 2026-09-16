@@ -9,7 +9,7 @@
   padding: 82px 24px 0;
   background: #f9f8f5;
   color: #000;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-dmsans), sans-serif;
 }
 
 .page a {
@@ -19,7 +19,7 @@
 
 /* Header and calls to action */
 .wordmark {
-  width: 140px;
+  width: 160px;
   height: auto;
 }
 .hero,
@@ -31,7 +31,7 @@
 .hero {
   max-width: 780px;
   margin: 80px 0 0;
-  font-size: 80px;
+  font-size: 72px;
   letter-spacing: -3.2px;
 }
 .subhero {
@@ -56,6 +56,27 @@
     0 2px 8px #0000001a;
   color: #fff !important;
   font-size: 24px;
+}
+.storeLinks {
+  position: relative;
+  z-index: 11;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  pointer-events: auto;
+}
+.storeLinks .appStore {
+  position: relative;
+  z-index: 11;
+  margin-top: 0;
+  gap: 8px;
+  pointer-events: auto;
+}
+.appStore svg {
+  width: 20px;
+  height: 20px;
 }
 .topStore {
   display: none;
@@ -115,12 +136,12 @@
 
 /* Feature section */
 .mission {
-  max-width: 600px;
+  max-width: 800px;
   margin: 120px 0 0;
   color: #000c;
   text-align: center;
-  font-size: 40px;
-  letter-spacing: -1.6px;
+  font-size: 36px;
+  letter-spacing: -1.44px;
   line-height: 1;
 }
 .featureBand {
@@ -177,6 +198,8 @@
 
 /* Footer */
 .footerLinks {
+  position: relative;
+  z-index: 11;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

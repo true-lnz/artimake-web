@@ -39,14 +39,13 @@ const Footer = () => (
                 <Link href="/mobile-app" aria-label="Открыть страницу приложения">
                   <Image src="/icons/app-store-badge.svg" alt="App Store" width={135} height={40} />
                 </Link>
-                <Link href="/mobile-app" aria-label="Открыть страницу приложения">
-                  <Image
-                    src="/icons/google-play-badge.svg"
-                    alt="Google Play"
-                    width={135}
-                    height={40}
-                  />
-                </Link>
+                <a
+                  href="https://www.rustore.ru/catalog/app/com.advancedsolutionsdevelopers.smartchair"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src="/icons/ru-store-badge.svg" alt="RuStore" width={135} height={40} />
+                </a>
               </div>
             </div>
           </div>

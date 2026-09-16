@@ -3,13 +3,13 @@
 import { Button, buttonVariants, type ButtonProps } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib";
+import Icons from "../global/icons";
 import Image from "next/image";
 import { useState } from "react";
 
 export const appStoreLinks = {
   appStore: "https://apps.apple.com/us/app/cronicle/id6751658893",
-  googlePlay:
-    "https://play.google.com/store/apps/details?id=com.advancedsolutionsdevelopers.smartchair",
+  ruStore: "https://www.rustore.ru/catalog/app/com.advancedsolutionsdevelopers.smartchair",
 } as const;
 
 function openStore(url: string) {
@@ -23,7 +23,7 @@ function getMobileStore() {
     (/Macintosh/.test(userAgent) && navigator.maxTouchPoints > 1);
 
   if (isIOS) return appStoreLinks.appStore;
-  if (/Android/.test(userAgent)) return appStoreLinks.googlePlay;
+  if (/Android/.test(userAgent)) return appStoreLinks.ruStore;
   return null;
 }
 
@@ -31,12 +31,14 @@ interface DownloadAppButtonProps {
   className?: string;
   variant?: ButtonProps["variant"];
   size?: ButtonProps["size"];
+  showLogos?: boolean;
 }
 
 export default function DownloadAppButton({
   className,
   variant = "secondary",
   size = "default",
+  showLogos = false,
 }: DownloadAppButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -58,6 +60,12 @@ export default function DownloadAppButton({
         className={className}
         onClick={handleClick}
       >
+        {showLogos && (
+          <>
+            <Icons.apple className="h-4 w-4" />
+            <Icons.store className="mr-1.5 h-4 w-4" />
+          </>
+        )}
         Скачать приложение
       </Button>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -77,16 +85,11 @@ export default function DownloadAppButton({
               </a>
               <a
                 className={cn(buttonVariants({ variant: "outline" }), "h-auto p-1")}
-                href={appStoreLinks.googlePlay}
+                href={appStoreLinks.ruStore}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src="/icons/google-play-badge.svg"
-                  alt="Google Play"
-                  width={135}
-                  height={40}
-                />
+                <Image src="/icons/ru-store-badge.svg" alt="RuStore" width={135} height={40} />
               </a>
             </div>
             <Image
