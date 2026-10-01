@@ -4,6 +4,7 @@ import { cn } from "@/lib";
 import "@/styles/globals.css";
 import { generateMetadata } from "@/utils";
 import { DM_Sans } from "next/font/google";
+import Script from "next/script";
 
 const font = DM_Sans({ subsets: ["latin"] });
 
@@ -16,6 +17,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
+      <Script id="safari-motion-fallback" strategy="beforeInteractive">
+        {`(() => {
+  const userAgent = navigator.userAgent;
+  const isSafari =
+    /Safari/i.test(userAgent) &&
+    !/Chrome|CriOS|Chromium|Android|FxiOS|EdgiOS|OPiOS/i.test(userAgent);
+  if (isSafari) document.documentElement.classList.add("safari-motion-fallback");
+})();`}
+      </Script>
       <body
         className={cn(
           "min-h-screen bg-background text-foreground !font-heading antialiased",
