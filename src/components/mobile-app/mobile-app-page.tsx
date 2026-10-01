@@ -23,30 +23,15 @@ const features = [
 ] as const;
 
 const ruStoreUrl = "https://www.rustore.ru/catalog/app/com.advancedsolutionsdevelopers.smartchair";
-const appStoreUrl = "https://apps.apple.com/us/app/cronicle/id6751658893";
+const appStoreUrl = "https://apps.apple.com/ru/app/artimake-умное-кресло/id6811352146";
 
 export default function MobileAppPage() {
   return (
     <div className={styles.page}>
-      <a
-        className={styles.qrDock}
-        href={ruStoreUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Сканируйте QR-код или нажмите, чтобы скачать приложение в RuStore"
-      >
-        <Image
-          className={styles.qr}
-          src="/images/qr.svg"
-          alt=""
-          width={164}
-          height={164}
-          aria-hidden="true"
-        />
-        <span className={styles.qrCaption}>
-          <span className={styles.underlined}>RuStore</span> ↗
-        </span>
-      </a>
+      <div className={styles.qrDock}>
+        <StoreQrLink href={ruStoreUrl} imageSrc="/images/qr.svg" storeName="RuStore" />
+        <StoreQrLink href={appStoreUrl} imageSrc="/images/qr-appstore.svg" storeName="App Store" />
+      </div>
 
       <Link href="/" aria-label="Перейти на главную страницу Артимэйк">
         <Image
@@ -127,6 +112,38 @@ export default function MobileAppPage() {
       <div className={styles.footerBlur} aria-hidden="true" />
       <div className={styles.footerFade} aria-hidden="true" />
     </div>
+  );
+}
+
+function StoreQrLink({
+  href,
+  imageSrc,
+  storeName,
+}: {
+  href: string;
+  imageSrc: string;
+  storeName: string;
+}) {
+  return (
+    <a
+      className={styles.qrLink}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Сканируйте QR-код или нажмите, чтобы скачать приложение в ${storeName}`}
+    >
+      <Image
+        className={styles.qr}
+        src={imageSrc}
+        alt=""
+        width={164}
+        height={164}
+        aria-hidden="true"
+      />
+      <span className={styles.qrCaption}>
+        <span className={styles.underlined}>{storeName}</span> ↗
+      </span>
+    </a>
   );
 }
 

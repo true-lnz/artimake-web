@@ -16,7 +16,7 @@ import {
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { FEATURES, PLANS } from "@/constants";
 import { cn } from "@/lib";
-import { ArrowRightIcon, BluetoothIcon, CheckIcon } from "lucide-react";
+import { ArrowRightIcon, BluetoothIcon, CheckIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -111,7 +111,12 @@ const HomePage = () => {
             <br></br>и статистика сидения — в единой системе без лишних устройств
           </p>
           <div className="mt-5 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
-            <Link href="/dashboard" className={buttonVariants({ className: "w-full sm:w-auto" })}>
+            <Link
+              href="https://ozon.ru/t/3Q2tVUX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ className: "w-full sm:w-auto" })}
+            >
               Купить в Ozon
               <ArrowRightIcon className="w-4 h-4 ml-1.5" />
             </Link>
@@ -201,53 +206,76 @@ const HomePage = () => {
         </AnimationContainer>
         <div className="grid grid-cols-1 gap-6 py-8 lg:grid-cols-3">
           <AnimationContainer className="lg:col-span-2">
-            <article className="group relative flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-[24px] bg-[#005BFF] p-6 text-white shadow-sm md:p-8">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 overflow-hidden opacity-25"
-              >
-                <div className="absolute -right-24 -top-20 h-72 w-72 rotate-12 rounded-[72px] border-[28px] border-white/80" />
-                <div className="absolute -bottom-32 -left-16 h-80 w-[130%] -rotate-12 border-[18px] border-white/70" />
-                <div className="absolute -right-8 bottom-8 h-36 w-36 rounded-full border-[14px] border-white/60" />
-              </div>
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute bottom-[-20px] right-[-10px] select-none text-[clamp(90px,15vw,180px)] font-black leading-none tracking-[-0.12em] text-white/10"
-              >
-                Ozon
-              </div>
-              <Image
-                src="/images/chair-1.png"
-                alt="Умное кресло Артимэйк"
-                width={520}
-                height={760}
-                draggable={false}
-                className="pointer-events-none absolute bottom-[-72px] right-[8%] z-0 h-[250px] w-auto select-none object-contain opacity-95 drop-shadow-[0_24px_24px_rgba(0,35,120,0.28)] sm:bottom-[-20px] sm:right-[14%] sm:h-[330px] lg:right-[27%] lg:h-[360px]"
-              />
-              <div className="relative z-10 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-sm text-white/75">Маркетплейс</p>
-                  <h3 className="mt-2 text-2xl font-semibold tracking-wide md:text-3xl">
-                    Артимэйк на Ozon
-                  </h3>
-                  <p className="mt-3 max-w-[min(22rem,58%)] text-sm leading-6 text-white/80">
-                    Мы готовим карточку кресла. Скоро его можно будет заказать на Ozon.
-                  </p>
+            <Link
+              href="https://ozon.ru/t/3Q2tVUX"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Купить умное кресло Артимэйк на Ozon"
+              className="group block h-full rounded-[24px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005BFF] focus-visible:ring-offset-4"
+            >
+              <article className="relative flex h-[380px] flex-col justify-between overflow-hidden rounded-[24px] bg-[#005BFF] p-6 text-white shadow-sm transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl md:p-8">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 overflow-hidden opacity-15"
+                >
+                  <div className="absolute -right-24 -top-20 h-72 w-72 rotate-12 rounded-[72px] border-[28px] border-white/80" />
+                  <div className="absolute -bottom-32 -left-16 h-80 w-[130%] -rotate-12 border-[18px] border-white/70" />
+                  <div className="absolute -right-8 bottom-8 h-36 w-36 rounded-full border-[14px] border-white/60" />
                 </div>
-                <span className="shrink-0 rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#005BFF]">
-                  Скоро
-                </span>
-              </div>
-              <div className="relative z-10 mt-8 flex items-end justify-between gap-4">
-                <div className="flex items-center gap-2 text-sm text-white/75">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
-                  Публикация готовится
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute bottom-[-20px] right-[-10px] select-none text-[clamp(90px,15vw,180px)] font-black leading-none tracking-[-0.12em] text-white/5"
+                >
+                  Ozon
                 </div>
-                <span className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-medium text-white/80">
-                  Скоро в продаже
-                </span>
-              </div>
-            </article>
+                <div className="pointer-events-none absolute bottom-6 right-6 top-6 z-0 hidden w-2/5 overflow-hidden rounded-[20px] bg-white/10 shadow-[0_18px_40px_rgba(0,25,90,0.28)] sm:block md:bottom-8 md:right-8 md:top-8">
+                  <Image
+                    src="/images/ozon-preview.webp"
+                    alt="Умное кресло Артимэйк"
+                    fill
+                    sizes="(max-width: 640px) 42vw, (max-width: 1024px) 40vw, 27vw"
+                    draggable={false}
+                    className="select-none object-cover object-top"
+                  />
+                </div>
+                <div className="relative z-10 w-full sm:w-[48%]">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="text-sm text-white/75">Маркетплейс</p>
+                      <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#005BFF]">
+                        Ozon
+                      </span>
+                    </div>
+                    <h3 className="mt-2 text-2xl font-semibold tracking-wide md:text-3xl">
+                      Умное&nbsp;кресло Артимэйк
+                    </h3>
+                    <p className="mt-3 text-sm leading-5 text-white/80 sm:leading-6">
+                      Поможет&nbsp;следить за&nbsp;посадкой во&nbsp;время работы, учёбы
+                      и&nbsp;отдыха за&nbsp;компьютером
+                    </p>
+                  </div>
+                </div>
+                <div className="relative z-10 flex w-full flex-col items-start gap-3 sm:w-[48%]">
+                  <span
+                    className="flex items-center gap-1 rounded-full border border-white/30 bg-[#003fbd]/65 px-3 py-2 text-white shadow-sm backdrop-blur-sm"
+                    aria-label="Рейтинг: 5 звёзд"
+                  >
+                    <span className="mr-1 text-sm font-semibold">5.0</span>
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <StarIcon
+                        key={index}
+                        className="h-3.5 w-3.5 fill-current"
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </span>
+                  <span className="inline-flex items-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#005BFF] shadow-sm transition-colors group-hover:bg-white/90">
+                    Перейти&nbsp;в Ozon
+                    <ArrowRightIcon className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </span>
+                </div>
+              </article>
+            </Link>
           </AnimationContainer>
           <AnimationContainer>
             <article className="flex h-full min-h-[360px] flex-col justify-between rounded-[24px] border border-border bg-muted p-6 text-[#262932] md:p-8">

@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export const appStoreLinks = {
-  appStore: "https://apps.apple.com/us/app/cronicle/id6751658893",
+  appStore: "https://apps.apple.com/ru/app/artimake-умное-кресло/id6811352146",
   ruStore: "https://www.rustore.ru/catalog/app/com.advancedsolutionsdevelopers.smartchair",
 } as const;
 

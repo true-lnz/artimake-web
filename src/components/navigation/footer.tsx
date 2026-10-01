@@ -36,9 +36,13 @@ const Footer = () => (
             <div>
               <h3 className="mb-3 font-semibold">Скачать приложение</h3>
               <div className="flex flex-col items-start gap-2">
-                <Link href="/mobile-app" aria-label="Открыть страницу приложения">
+                <a
+                  href="https://apps.apple.com/ru/app/artimake-умное-кресло/id6811352146"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image src="/icons/app-store-badge.svg" alt="App Store" width={135} height={40} />
-                </Link>
+                </a>
                 <a
                   href="https://www.rustore.ru/catalog/app/com.advancedsolutionsdevelopers.smartchair"
                   target="_blank"
